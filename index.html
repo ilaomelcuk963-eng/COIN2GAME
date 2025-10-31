@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Grand Mobile" content="width=device-width, initial-scale=1.0">
+    <title>ROFL Cheats - Grand Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { 
+                text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+                transform: scale(1);
+            }
+            to { 
+                text-shadow: 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff;
+                transform: scale(1.05);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        /* Сетка для рамок */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        /* Общие стили для рамок */
+        .frame {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .frame:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Рамка с фото 1 */
+        .photo-frame-1 {
+            border-color: #00ffff;
+            animation: borderGlow1 3s infinite alternate;
+        }
+
+        @keyframes borderGlow1 {
+            from { box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); }
+            to { box-shadow: 0 0 40px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.6); }
+        }
+
+        /* Рамка с фото 2 */
+        .photo-frame-2 {
+            border-color: #ff00ff;
+            animation: borderGlow2 3s infinite alternate;
+        }
+
+        @keyframes borderGlow2 {
+            from { box-shadow: 0 0 20px rgba(255, 0, 255, 0.4); }
+            to { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.6); }
+        }
+
+        /* Рамка с предупреждением */
+        .warning-frame {
+            border-color: #ff4444;
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(255, 68, 68, 0.2));
+            animation: warningGlow 2s infinite alternate;
+        }
+
+        @keyframes warningGlow {
+            from { 
+                box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+                transform: scale(1);
+            }
+            to { 
+                box-shadow: 0 0 40px rgba(255, 68, 68, 0.8);
+                transform: scale(1.02);
+            }
+        }
+
+        /* Рамка с паролем */
+        .password-frame {
+            border-color: #00ff00;
+            animation: passwordGlow 3s infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes passwordGlow {
+            from { box-shadow: 0 0 20px rgba(0, 255, 0, 0.4); }
+            to { box-shadow: 0 0 40px rgba(0, 255, 0, 0.8), 0 0 60px rgba(0, 255, 0, 0.6); }
+        }
+
+        .frame-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .frame-content {
+            line-height: 1.6;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #333, #555);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        /* Стили для формы пароля */
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border: 2px solid #00ff00;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .password-input:focus {
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+            border-color: #00ffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #00ff00, #00ffff);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+        }
+
+        .error-message {
+            color: #ff4444;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Плавающие элементы */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            .container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Плавающие элементы для фона -->
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; top: 80%; left: 20%; animation-delay: 4s;"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">ROFL CHEATS</div>
+            <div class="subtitle">Grand Mobile - Эксклюзивные возможности</div>
+        </div>
+
+        <div class="grid">
+            <!-- Рамка с фото 1 -->
+            <div class="frame photo-frame-1">
+                <div class="frame-title">🚀 ПРЕМИУМ ФУНКЦИИ</div>
+                <div class="photo-placeholder">
+                    <img src="./images (1).jpg" alt="">
+                </div>
+                <div class="frame-content">
+                    <p>• Автоматическое прицеливание</p>
+                    <p>• Умный выбор целей</p>
+                    <p>• Настройка чувствительности</p>
+                    <p>• Полная анонимность</p>
+                </div>
+            </div>
+
+            <!-- Рамка с фото 2 -->
+            <div class="frame photo-frame-2">
+                <div class="frame-title">👁️ WALL HACK v3.1</div>
+                <div class="photo-placeholder">
+                    <img src="./images.jpg" alt="">
+                </div>
+                <div class="frame-content">
+                    <p>• Сквозь стены видимость</p>
+                    <p>• Отображение врагов</p>
+                    <p>• Показ здоровья</p>
+                    <p>• Радар функции</p>
+                </div>
+            </div>
+
+            <!-- Рамка с предупреждением -->
+            <div class="frame warning-frame">
+                <div class="frame-title">⚠️ ВНИМАНИЕ: ОПАСНОСТЬ ЧИТОВ</div>
+                <div class="frame-content">
+                    <p style="margin-bottom: 15px;"><strong>Использование читов может привести к:</strong></p>
+                    <p>• 🔴 Перманентному бану аккаунта</p>
+                    <p>• 🔴 Потере прогресса и покупок</p>
+                    <p>• 🔴 Блокировке устройства</p>
+                    <p>• 🔴 Юридическим последствиям</p>
+                    <p>• <a href="  https://t.me/chatgrandmobilerp ">🔴</a> Нарушению игрового баланса</p>
+                    
+                    <div style="background: rgba(255, 68, 68, 0.2); padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 4px solid #ff4444;">
+                        <p style="font-style: italic; margin: 0;">
+                            "Честная игра - лучшая игра. Использование читов лишает вас настоящего удовольствия от достижений."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Рамка с паролем -->
+            <div class="frame password-frame">
+                <div class="frame-title">🔐 СЕКРЕТНЫЙ ДОСТУП</div>
+                <div class="frame-content">
+                    <p>Введите пароль для получения доступа к эксклюзивному контенту:</p>
+                    
+                    <form id="passwordForm" action="/check_password" method="POST">
+                        <input type="password" class="password-input" id="password" name="password" placeholder="Введите секретный код" required>
+                        
+                        <button type="submit" class="submit-btn">ПОЛУЧИТЬ ДОСТУП</button>
+                    </form>
+                    
+                    <div class="error-message" id="error">Неверный пароль! Попробуйте снова.</div>
+                    
+                    <div style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
+                        <p>После ввода правильного пароля вы будете перенаправлены на специальную страницу</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Обработка формы пароля
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('error');
+            
+            if (password === '1488') {
+                // Если пароль правильный, отправляем форму
+                this.submit();
+            } else {
+                // Показываем ошибку
+                error.style.display = 'block';
+                document.getElementById('password').style.borderColor = '#ff4444';
+                
+                // Анимация ошибки
+                document.querySelector('.password-frame').style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    document.querySelector('.password-frame').style.animation = '';
+                }, 500);
+            }
+        });
+
+        // Случайные анимации для рамок
+        document.querySelectorAll('.frame').forEach((frame, index) => {
+            frame.style.animationDelay = (index * 0.2) + 's';
+        });
+
+        // Показ ошибки если есть в URL параметрах
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === '1') {
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('password').style.borderColor = '#ff4444';
+        }
+    </script>
+</body>
+</html>
