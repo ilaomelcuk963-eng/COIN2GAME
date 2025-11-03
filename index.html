@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coin2Game - Продажа Robux</title>
+    <title>Coin2Game - Купить Robux</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -213,6 +213,42 @@
             background-color: #e91e63;
         }
         
+        /* Offer Section */
+        .offer-section {
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 500px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .offer-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .offer-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 15px 0;
+        }
+        
+        .offer-robux {
+            font-size: 24px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        .offer-note {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
         /* User Search Section */
         .user-search {
             background-color: var(--dark-card);
@@ -305,6 +341,76 @@
             margin-bottom: 30px;
             text-align: center;
             color: var(--primary);
+        }
+        
+        .add-review {
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+        
+        .add-review h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .review-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .review-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .review-form input, .review-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: var(--dark-surface);
+            color: var(--text);
+            font-size: 16px;
+        }
+        
+        .review-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .star {
+            font-size: 24px;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star.active, .star:hover {
+            color: #ffc107;
+        }
+        
+        .submit-review {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-review:hover {
+            background-color: var(--primary-dark);
         }
         
         .reviews-container {
@@ -405,6 +511,7 @@
         
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
         
         .form-group label {
@@ -421,6 +528,14 @@
             background-color: var(--dark-surface);
             color: var(--text);
             font-size: 16px;
+        }
+        
+        .card-type {
+            position: absolute;
+            right: 15px;
+            top: 40px;
+            font-size: 24px;
+            color: #555;
         }
         
         .form-row {
@@ -580,13 +695,13 @@
                 <nav>
                     <ul>
                         <li><a href="#" class="nav-link active" data-page="home">Главная</a></li>
-                        <li><a href="#" class="nav-link" data-page="about">О нас</a></li>
-                        <li><a href="#" class="nav-link" data-page="support">Поддержка</a></li>
                         <li><a href="#" class="nav-link" data-page="profile">Профиль</a></li>
+                        <li><a href="#" class="nav-link" data-page="market">Маркет</a></li>
+                        <li><a href="#" class="nav-link" data-page="support">Поддержка</a></li>
                     </ul>
                 </nav>
                 <div class="auth-section">
-                    <button class="login-btn">Вход</button>
+                    <button class="login-btn">Войти</button>
                 </div>
             </div>
         </div>
@@ -598,7 +713,7 @@
             <section id="home" class="page active">
                 <div class="hero">
                     <h1>Покупайте Robux по лучшей цене!</h1>
-                    <p>1 рубль = 3 Robux. Быстрая доставка, безопасные платежи и гарантия качества.</p>
+                    <p>Пополни баланс Roblox быстро и просто, без входа в аккаунт.<br>Удобная оплата и доступные методы доставки.</p>
                     
                     <div class="rate-box">
                         <h2>Текущий курс</h2>
@@ -606,6 +721,15 @@
                         <p>Без комиссии и скрытых платежей</p>
                         <button class="buy-btn" id="open-payment">Купить Robux</button>
                     </div>
+                </div>
+                
+                <div class="offer-section">
+                    <h2>Лучший курс Robux</h2>
+                    <div class="offer-price">159 ₽</div>
+                    <div class="offer-robux">= 400 R$</div>
+                    <p>Вы заплатите:</p>
+                    <button class="buy-btn" id="open-offer-payment">Купить Robux</button>
+                    <p class="offer-note">Robux будут доставлены в течение 3 дней без комиссии!</p>
                 </div>
                 
                 <div class="user-search">
@@ -621,19 +745,53 @@
                 
                 <div class="reviews-section">
                     <h2>Отзывы наших клиентов</h2>
+                    
+                    <div class="add-review">
+                        <h3>Добавить отзыв</h3>
+                        <form class="review-form" id="review-form">
+                            <div class="form-group">
+                                <label for="reviewer-name">Ваше имя</label>
+                                <input type="text" id="reviewer-name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Оценка</label>
+                                <div class="star-rating">
+                                    <span class="star" data-rating="1">★</span>
+                                    <span class="star" data-rating="2">★</span>
+                                    <span class="star" data-rating="3">★</span>
+                                    <span class="star" data-rating="4">★</span>
+                                    <span class="star" data-rating="5">★</span>
+                                </div>
+                                <input type="hidden" id="rating-value" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="review-text">Текст отзыва</label>
+                                <textarea id="review-text" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-review">Добавить отзыв</button>
+                        </form>
+                    </div>
+                    
                     <div class="reviews-container">
                         <!-- Отзывы будут загружаться здесь -->
                     </div>
                     <div class="average-rating">
-                        Средняя оценка: <span class="rating-value">4.8</span>/5
+                        Средняя оценка: <span class="rating-value" id="average-rating">4.8</span>/5
                     </div>
                 </div>
             </section>
             
-            <!-- О нас -->
-            <section id="about" class="page">
-                <h1>О нас</h1>
-                <p>Мы - надежный сервис по продаже Robux с 2020 года. Наша миссия - предоставлять качественные услуги по доступным ценам.</p>
+            <!-- Профиль -->
+            <section id="profile" class="page">
+                <h1>Профиль</h1>
+                <p>Здесь вы можете управлять своим профилем и настройками.</p>
+                <!-- Дополнительный контент -->
+            </section>
+            
+            <!-- Маркет -->
+            <section id="market" class="page">
+                <h1>Маркет</h1>
+                <p>Здесь вы можете просмотреть доступные предложения.</p>
                 <!-- Дополнительный контент -->
             </section>
             
@@ -641,13 +799,6 @@
             <section id="support" class="page">
                 <h1>Поддержка</h1>
                 <p>Если у вас возникли проблемы, свяжитесь с нашей службой поддержки.</p>
-                <!-- Дополнительный контент -->
-            </section>
-            
-            <!-- Профиль -->
-            <section id="profile" class="page">
-                <h1>Профиль</h1>
-                <p>Здесь вы можете управлять своим профилем и настройками.</p>
                 <!-- Дополнительный контент -->
             </section>
         </div>
@@ -662,6 +813,9 @@
                 <div class="form-group">
                     <label for="card-number">Номер карты</label>
                     <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+                    <div class="card-type" id="card-type">
+                        <i class="far fa-credit-card"></i>
+                    </div>
                 </div>
                 
                 <div class="form-row">
@@ -706,9 +860,9 @@
                 <div class="footer-logo">coin2_game</div>
                 <div class="footer-links">
                     <a href="#" data-page="home">Главная</a>
-                    <a href="#" data-page="about">О нас</a>
-                    <a href="#" data-page="support">Поддержка</a>
                     <a href="#" data-page="profile">Профиль</a>
+                    <a href="#" data-page="market">Маркет</a>
+                    <a href="#" data-page="support">Поддержка</a>
                 </div>
                 <div class="copyright">
                     &copy; 2023 coin2_game. Все права защищены.
@@ -746,6 +900,7 @@
         
         // Модальное окно оплаты
         const openPaymentBtn = document.getElementById('open-payment');
+        const openOfferPaymentBtn = document.getElementById('open-offer-payment');
         const paymentModal = document.getElementById('payment-modal');
         const closeModalBtn = document.querySelector('.close-modal');
         const paymentForm = document.getElementById('payment-form');
@@ -754,6 +909,12 @@
         const totalCostInput = document.getElementById('total-cost');
         
         openPaymentBtn.addEventListener('click', () => {
+            paymentModal.classList.add('active');
+        });
+        
+        openOfferPaymentBtn.addEventListener('click', () => {
+            robuxAmountInput.value = 400;
+            totalCostInput.value = '159 RUB';
             paymentModal.classList.add('active');
         });
         
@@ -773,6 +934,85 @@
             const robuxAmount = parseInt(robuxAmountInput.value) || 0;
             const cost = Math.ceil(robuxAmount / 3);
             totalCostInput.value = `${cost} RUB`;
+        });
+        
+        // Определение типа карты
+        const cardNumberInput = document.getElementById('card-number');
+        const cardTypeElement = document.getElementById('card-type');
+        
+        cardNumberInput.addEventListener('input', () => {
+            const cardNumber = cardNumberInput.value.replace(/\s/g, '');
+            let cardType = 'unknown';
+            
+            // Определяем тип карты по первым цифрам
+            if (/^4/.test(cardNumber)) {
+                cardType = 'visa';
+            } else if (/^5[1-5]/.test(cardNumber)) {
+                cardType = 'mastercard';
+            } else if (/^3[47]/.test(cardNumber)) {
+                cardType = 'amex';
+            } else if (/^6(?:011|5)/.test(cardNumber)) {
+                cardType = 'discover';
+            } else if (/^2/.test(cardNumber)) {
+                cardType = 'mir';
+            }
+            
+            // Обновляем иконку карты
+            switch(cardType) {
+                case 'visa':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-visa"></i>';
+                    break;
+                case 'mastercard':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-mastercard"></i>';
+                    break;
+                case 'amex':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-amex"></i>';
+                    break;
+                case 'discover':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-discover"></i>';
+                    break;
+                case 'mir':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-mir"></i>';
+                    break;
+                default:
+                    cardTypeElement.innerHTML = '<i class="far fa-credit-card"></i>';
+            }
+        });
+        
+        // Форматирование номера карты
+        cardNumberInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let matches = value.match(/\d{4,16}/g);
+            let match = matches && matches[0] || '';
+            let parts = [];
+            
+            for (let i = 0; i < match.length; i += 4) {
+                parts.push(match.substring(i, i + 4));
+            }
+            
+            if (parts.length) {
+                e.target.value = parts.join(' ');
+            } else {
+                e.target.value = value;
+            }
+        });
+        
+        // Форматирование срока действия карты
+        const expiryDateInput = document.getElementById('expiry-date');
+        expiryDateInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Ограничение CVV
+        const cvvInput = document.getElementById('cvv');
+        cvvInput.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
         });
         
         // Обработка формы оплаты
@@ -795,6 +1035,7 @@
                 paymentForm.style.display = 'block';
                 paymentForm.reset();
                 totalCostInput.value = '100 RUB';
+                cardTypeElement.innerHTML = '<i class="far fa-credit-card"></i>';
             }, 5000);
         });
         
@@ -829,12 +1070,15 @@
             }
         });
         
-        // Загрузка отзывов
+        // Система отзывов
+        const reviewForm = document.getElementById('review-form');
         const reviewsContainer = document.querySelector('.reviews-container');
+        const averageRatingElement = document.getElementById('average-rating');
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('rating-value');
         
-        // В реальном приложении здесь был бы запрос к API Google Drive
-        // для получения отзывов
-        const reviews = [
+        // Инициализация отзывов из localStorage
+        let reviews = JSON.parse(localStorage.getItem('coin2game-reviews')) || [
             { name: "Алексей", rating: 5, text: "Отличный сервис! Robux пришли быстро, без проблем." },
             { name: "Мария", rating: 4, text: "Хорошие цены, но пришлось немного подождать доставки." },
             { name: "Дмитрий", rating: 5, text: "Пользуюсь регулярно, всегда всё четко и быстро!" },
@@ -843,28 +1087,93 @@
             { name: "Ольга", rating: 5, text: "Впервые покупала Robux, всё прошло без проблем." }
         ];
         
+        // Рейтинг звездами
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = parseInt(this.getAttribute('data-rating'));
+                ratingValue.value = rating;
+                
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Обработка формы отзыва
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('reviewer-name').value;
+            const rating = parseInt(ratingValue.value);
+            const text = document.getElementById('review-text').value;
+            
+            if (rating === 0) {
+                alert('Пожалуйста, поставьте оценку');
+                return;
+            }
+            
+            // Добавляем новый отзыв
+            reviews.unshift({ name, rating, text });
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('coin2game-reviews', JSON.stringify(reviews));
+            
+            // Перерисовываем отзывы
+            renderReviews();
+            
+            // Сбрасываем форму
+            reviewForm.reset();
+            stars.forEach(star => star.classList.remove('active'));
+            ratingValue.value = 0;
+        });
+        
+        // Функция отрисовки отзывов
         function renderReviews() {
             reviewsContainer.innerHTML = '';
+            
+            if (reviews.length === 0) {
+                reviewsContainer.innerHTML = '<p>Пока нет отзывов. Будьте первым!</p>';
+                return;
+            }
             
             reviews.forEach(review => {
                 const reviewCard = document.createElement('div');
                 reviewCard.className = 'review-card';
                 
-                let stars = '';
+                let starsHtml = '';
                 for (let i = 0; i < 5; i++) {
-                    stars += `<i class="fas fa-star${i < review.rating ? '' : '-half-alt'}"></i>`;
+                    starsHtml += `<i class="fas fa-star${i < review.rating ? '' : '-half-alt'}"></i>`;
                 }
                 
                 reviewCard.innerHTML = `
                     <div class="review-header">
                         <div class="reviewer">${review.name}</div>
-                        <div class="stars">${stars}</div>
+                        <div class="stars">${starsHtml}</div>
                     </div>
                     <div class="review-text">${review.text}</div>
                 `;
                 
                 reviewsContainer.appendChild(reviewCard);
             });
+            
+            // Обновляем средний рейтинг
+            updateAverageRating();
+        }
+        
+        // Функция обновления среднего рейтинга
+        function updateAverageRating() {
+            if (reviews.length === 0) {
+                averageRatingElement.textContent = '0';
+                return;
+            }
+            
+            const total = reviews.reduce((sum, review) => sum + review.rating, 0);
+            const average = (total / reviews.length).toFixed(1);
+            averageRatingElement.textContent = average;
         }
         
         // Инициализация при загрузке страницы
