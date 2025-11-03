@@ -16,6 +16,7 @@
             --dark-card: #252525;
             --text: #e0e0e0;
             --text-secondary: #aaaaaa;
+            --alert: #ff4444;
         }
 
         * {
@@ -92,6 +93,7 @@
         .nav-item {
             display: inline-block;
             margin: 0 15px;
+            position: relative;
         }
 
         .nav-link {
@@ -113,6 +115,21 @@
         .nav-link:hover, .nav-link.active {
             color: var(--primary);
             background-color: rgba(74, 111, 165, 0.1);
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--alert);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Main Content Styles */
@@ -205,6 +222,69 @@
             margin-bottom: 20px;
         }
 
+        .robux-slider-container {
+            margin: 30px 0;
+            padding: 0 10px;
+        }
+
+        .robux-slider {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: var(--dark-surface);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .robux-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .robux-slider::-webkit-slider-thumb:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .slider-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .promo-code-section {
+            margin: 20px 0;
+        }
+
+        .promo-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: var(--dark-surface);
+            color: var(--text);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .apply-promo {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+        }
+
         .buy-btn {
             background-color: var(--accent);
             color: white;
@@ -229,233 +309,105 @@
             margin-top: 10px;
         }
 
-        /* Profile Page */
-        .profile-section {
-            background-color: var(--dark-card);
-            border-radius: 12px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 500px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            text-align: center;
+        /* Promotions Section */
+        .promotions-section {
+            margin-top: 60px;
         }
 
-        .profile-section h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .promotions-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
             color: var(--primary);
         }
 
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 40px;
-            overflow: hidden;
-        }
-
-        .profile-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-info {
-            margin-bottom: 20px;
-        }
-
-        .profile-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .profile-info p {
-            color: var(--text-secondary);
-        }
-
-        /* Roblox Search */
-        .roblox-search {
-            background-color: var(--dark-card);
-            border-radius: 12px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 500px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .roblox-search h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
-        }
-
-        .search-form {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 1px solid #444;
-            border-radius: 4px 0 0 4px;
-            background-color: var(--dark-surface);
-            color: var(--text);
-            font-size: 16px;
-        }
-
-        .search-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .search-results {
+        .promotions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
-        .user-card {
-            background-color: var(--dark-surface);
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s;
-        }
-
-        .user-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            overflow: hidden;
-        }
-
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .user-info h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .user-info p {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        /* Market Page */
-        .market-section {
+        .promotion-card {
             background-color: var(--dark-card);
             border-radius: 12px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 800px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .market-section h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--primary);
+            padding: 25px;
             text-align: center;
-        }
-
-        .market-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .market-item {
-            background-color: var(--dark-surface);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
+            position: relative;
         }
 
-        .market-item:hover {
+        .promotion-card:hover {
             transform: translateY(-5px);
         }
 
-        .market-item-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 15px;
+        .promotion-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--alert);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
         }
 
-        .market-item h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .market-item p {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-        }
-
-        .market-item-price {
-            font-size: 20px;
+        .promotion-robux {
+            font-size: 24px;
             font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .promotion-price {
+            font-size: 20px;
             color: var(--accent);
             margin-bottom: 15px;
         }
 
-        /* Support Page */
-        .support-section {
+        .promotion-quantity {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            margin-top: 60px;
+        }
+
+        .reviews-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .add-review {
             background-color: var(--dark-card);
             border-radius: 12px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 500px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
         }
 
-        .support-section h2 {
-            font-size: 24px;
+        .add-review h3 {
             margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
+            color: var(--accent);
         }
 
-        .support-form .form-group {
+        .review-form .form-group {
             margin-bottom: 20px;
         }
 
-        .support-form label {
+        .review-form label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
         }
 
-        .support-form input, .support-form textarea, .support-form select {
+        .review-form input, .review-form textarea {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #444;
@@ -465,26 +417,211 @@
             font-size: 16px;
         }
 
-        .support-form textarea {
+        .review-form textarea {
             min-height: 100px;
             resize: vertical;
         }
 
-        .submit-support {
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            font-size: 24px;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .star.active, .star:hover {
+            color: #ffc107;
+        }
+
+        .submit-review {
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 12px 25px;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            width: 100%;
+            font-weight: 500;
             transition: background-color 0.3s;
         }
 
-        .submit-support:hover {
+        .submit-review:hover {
             background-color: var(--primary-dark);
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reviewer {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .stars {
+            color: #ffc107;
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .delete-review {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .delete-review:hover {
+            color: var(--alert);
+        }
+
+        .average-rating {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .rating-value {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 24px;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-section {
+            margin-bottom: 30px;
+        }
+
+        .admin-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background-color: var(--dark-surface);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .admin-table th {
+            background-color: var(--dark-surface);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .admin-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .admin-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .btn-danger {
+            background-color: var(--alert);
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Admin Login */
+        .admin-login {
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .admin-login h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
         }
 
         /* Payment Modal */
@@ -539,6 +676,7 @@
 
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
 
         .form-group label {
@@ -555,6 +693,14 @@
             background-color: var(--dark-surface);
             color: var(--text);
             font-size: 16px;
+        }
+
+        .card-type {
+            position: absolute;
+            right: 15px;
+            top: 40px;
+            font-size: 24px;
+            color: #555;
         }
 
         .form-row {
@@ -656,7 +802,7 @@
             font-size: 14px;
         }
 
-        /* Responsive Styles */
+     /* Responsive Styles */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -691,6 +837,14 @@
                 padding: 8px 15px;
                 font-size: 14px;
             }
+
+            .admin-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .promotions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
         }
 
         @media (max-width: 480px) {
@@ -709,6 +863,14 @@
             .nav-link {
                 padding: 6px 12px;
                 font-size: 12px;
+            }
+
+            .admin-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .promotions-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -743,27 +905,27 @@
                         </a>
                     </div>
                     <div class="nav-item">
-                        <a href="#" class="nav-link" data-page="roblox-search">
-                            <i class="fas fa-search"></i>
-                            Поиск Roblox
+                        <a href="#" class="nav-link" data-page="promotions">
+                            <i class="fas fa-tag"></i>
+                            Акции
                         </a>
                     </div>
                     <div class="nav-item">
-                        <a href="#" class="nav-link" data-page="market">
-                            <i class="fas fa-store"></i>
-                            Маркет
+                        <a href="#" class="nav-link" data-page="reviews">
+                            <i class="fas fa-star"></i>
+                            Отзывы
                         </a>
                     </div>
                     <div class="nav-item">
-                        <a href="#" class="nav-link" data-page="support">
-                            <i class="fas fa-headset"></i>
-                            Поддержка
+                        <a href="#" class="nav-link" data-page="admin-login">
+                            <i class="fas fa-cog"></i>
+                            Админ
                         </a>
                     </div>
                 </div>
             </div>
 
-                 <!-- Главная страница -->
+            <!-- Главная страница -->
             <section id="home" class="page active">
                 <div class="hero">
                     <h1>Купить Робуксы</h1>
@@ -772,8 +934,22 @@
 
                 <div class="offer-section">
                     <h2>Лучший курс робуксов</h2>
-                    <div class="offer-price">159 ₽</div>
-                    <div class="offer-robux">= 400 R$</div>
+                    <div class="offer-price" id="offer-price">159 ₽</div>
+                    <div class="offer-robux" id="offer-robux">= 400 R$</div>
+
+                    <div class="robux-slider-container">
+                        <input type="range" min="100" max="5000" value="400" class="robux-slider" id="robux-slider">
+                        <div class="slider-values">
+                            <span>100 R$</span>
+                            <span>5000 R$</span>
+                        </div>
+                    </div>
+
+                    <div class="promo-code-section">
+                        <input type="text" class="promo-input" id="promo-code" placeholder="Введите промокод">
+                        <button class="apply-promo" id="apply-promo">Применить промокод</button>
+                    </div>
+
                     <p>Вы заплатите:</p>
                     <button class="buy-btn" id="open-offer-payment">Купить робуксы</button>
                     <p class="offer-note">Robux будут доставлены в течение 3 дней без комиссии!</p>
@@ -782,7 +958,7 @@
 
             <!-- Профиль -->
             <section id="profile" class="page">
-                <div class="profile-section">
+                <div class="offer-section">
                     <h2>Ваш профиль</h2>
                     <div class="profile-avatar">
                         <i class="fas fa-user" id="default-avatar"></i>
@@ -797,94 +973,180 @@
                 </div>
             </section>
 
-            <!-- Поиск Roblox -->
-            <section id="roblox-search" class="page">
-                <div class="roblox-search">
-                    <h2>Поиск пользователей Roblox</h2>
-                    <div class="search-form">
-                        <input type="text" class="search-input" id="roblox-search-input" placeholder="Введите никнейм Roblox">
-                        <button class="search-btn" id="roblox-search-btn">Найти</button>
-                    </div>
-                    <div class="search-results" id="roblox-search-results">
-                        <!-- Результаты поиска будут здесь -->
+            <!-- Акции -->
+            <section id="promotions" class="page">
+                <div class="promotions-section">
+                    <h2>Специальные акции</h2>
+                    <p style="text-align: center; margin-bottom: 30px; color: var(--text-secondary);">Ограниченные предложения на покупку Robux</p>
+                    
+                    <div class="promotions-grid" id="promotions-grid">
+                        <!-- Акции будут загружаться здесь -->
                     </div>
                 </div>
             </section>
 
-            <!-- Маркет -->
-            <section id="market" class="page">
-                <div class="market-section">
-                    <h2>Маркет Robux</h2>
-                    <div class="market-items">
-                        <div class="market-item">
-                            <div class="market-item-icon">
-                                <i class="fas fa-coins"></i>
+            <!-- Отзывы -->
+            <section id="reviews" class="page">
+                <div class="reviews-section">
+                    <h2>Отзывы наших клиентов</h2>
+
+                    <div class="add-review">
+                        <h3>Добавить отзыв</h3>
+                        <form class="review-form" id="review-form">
+                            <div class="form-group">
+                                <label for="reviewer-name">Ваше имя</label>
+                                <input type="text" id="reviewer-name" class="form-control" required>
                             </div>
-                            <h3>400 R$</h3>
-                            <p>Базовый набор</p>
-                            <div class="market-item-price">159 ₽</div>
-                            <button class="buy-btn">Купить</button>
-                        </div>
-                        <div class="market-item">
-                            <div class="market-item-icon">
-                                <i class="fas fa-gem"></i>
+                            <div class="form-group">
+                                <label>Оценка</label>
+                                <div class="star-rating">
+                                    <span class="star" data-rating="1">★</span>
+                                    <span class="star" data-rating="2">★</span>
+                                    <span class="star" data-rating="3">★</span>
+                                    <span class="star" data-rating="4">★</span>
+                                    <span class="star" data-rating="5">★</span>
+                                </div>
+                                <input type="hidden" id="rating-value" value="0">
                             </div>
-                            <h3>800 R$</h3>
-                            <p>Продвинутый набор</p>
-                            <div class="market-item-price">299 ₽</div>
-                            <button class="buy-btn">Купить</button>
-                        </div>
-                        <div class="market-item">
-                            <div class="market-item-icon">
-                                <i class="fas fa-crown"></i>
+                            <div class="form-group">
+                                <label for="review-text">Текст отзыва</label>
+                                <textarea id="review-text" class="form-control" required></textarea>
                             </div>
-                            <h3>1200 R$</h3>
-                            <p>Премиум набор</p>
-                            <div class="market-item-price">449 ₽</div>
-                            <button class="buy-btn">Купить</button>
-                        </div>
-                        <div class="market-item">
-                            <div class="market-item-icon">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <h3>2000 R$</h3>
-                            <p>Максимальный набор</p>
-                            <div class="market-item-price">749 ₽</div>
-                            <button class="buy-btn">Купить</button>
-                        </div>
+                            <button type="submit" class="submit-review">Добавить отзыв</button>
+                        </form>
+                    </div>
+
+                    <div class="reviews-container" id="reviews-container">
+                        <!-- Отзывы будут загружаться здесь -->
+                    </div>
+                    <div class="average-rating">
+                        Средняя оценка: <span class="rating-value" id="average-rating">4.8</span>/5
                     </div>
                 </div>
             </section>
 
-            <!-- Поддержка -->
-            <section id="support" class="page">
-                <div class="support-section">
-                    <h2>Служба поддержки</h2>
-                    <form class="support-form">
+            <!-- Админ панель -->
+            <section id="admin-login" class="page">
+                <div class="admin-login">
+                    <h2>Вход в админ-панель</h2>
+                    <div class="form-group">
+                        <input type="password" id="admin-password" class="form-control" placeholder="Введите пароль">
+                    </div>
+                    <button class="buy-btn" id="admin-login-btn">Войти</button>
+                </div>
+            </section>
+
+            <!-- Админ панель (после входа) -->
+            <section id="admin-panel" class="page">
+                <div class="admin-panel">
+                    <h2>Админ-панель</h2>
+                    
+                    <div class="admin-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-visitors">0</div>
+                            <div class="stat-label">Посетителей</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-orders">0</div>
+                            <div class="stat-label">Заказов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-reviews">0</div>
+                            <div class="stat-label">Отзывов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-promotions">0</div>
+                            <div class="stat-label">Акций</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-section">
+                        <h3>Последние посетители</h3>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Время</th>
+                                    <th>IP</th>
+                                    <th>Действие</th>
+                                </tr>
+                            </thead>
+                            <tbody id="visitors-table">
+                                <!-- Данные о посетителях -->
+</tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-section">
+                        <h3>Заказы</h3>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Сумма</th>
+                                    <th>Robux</th>
+                                    <th>Статус</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table">
+                                <!-- Данные о заказах -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-section">
+                        <h3>Управление отзывами</h3>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Имя</th>
+                                    <th>Оценка</th>
+                                    <th>Текст</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reviews-table">
+                                <!-- Данные об отзывах -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-section">
+                        <h3>Управление акциями</h3>
                         <div class="form-group">
-                            <label for="support-name">Ваше имя</label>
-                            <input type="text" id="support-name" class="form-control" required>
+                            <input type="number" id="promo-robux" class="form-control" placeholder="Количество Robux">
                         </div>
                         <div class="form-group">
-                            <label for="support-email">Ваш email</label>
-                            <input type="email" id="support-email" class="form-control" required>
+                            <input type="number" id="promo-price" class="form-control" placeholder="Цена в рублях">
                         </div>
                         <div class="form-group">
-                            <label for="support-topic">Тема обращения</label>
-                            <select id="support-topic" class="form-control" required>
-                                <option value="">Выберите тему</option>
-                                <option value="payment">Проблемы с оплатой</option>
-                                <option value="delivery">Проблемы с доставкой</option>
-                                <option value="account">Проблемы с аккаунтом</option>
-                                <option value="other">Другое</option>
-                            </select>
+                            <input type="number" id="promo-quantity" class="form-control" placeholder="Количество">
                         </div>
-                        <div class="form-group">
-                            <label for="support-message">Сообщение</label>
-                            <textarea id="support-message" class="form-control" required></textarea>
+                        <button class="admin-btn btn-primary" id="add-promotion">Добавить акцию</button>
+                        
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Robux</th>
+                                    <th>Цена</th>
+                                    <th>Количество</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="promotions-table">
+                                <!-- Данные об акциях -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-section">
+                        <h3>Синхронизация с Google Drive</h3>
+                        <div class="admin-actions">
+                            <button class="admin-btn btn-primary" id="sync-data">Синхронизировать данные</button>
+                            <button class="admin-btn btn-primary" id="export-data">Экспорт в Google Drive</button>
                         </div>
-                        <button type="submit" class="submit-support">Отправить запрос</button>
-                    </form>
+                        <div id="sync-status" style="margin-top: 10px; color: var(--text-secondary);"></div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -899,6 +1161,9 @@
                 <div class="form-group">
                     <label for="card-number">Номер карты</label>
                     <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+                    <div class="card-type" id="card-type">
+                        <i class="far fa-credit-card"></i>
+                    </div>
                 </div>
                 
                 <div class="form-row">
@@ -944,9 +1209,8 @@
                 <div class="footer-links">
                     <a href="#" data-page="home">Главная</a>
                     <a href="#" data-page="profile">Профиль</a>
-                    <a href="#" data-page="roblox-search">Поиск Roblox</a>
-                    <a href="#" data-page="market">Маркет</a>
-                    <a href="#" data-page="support">Поддержка</a>
+                    <a href="#" data-page="promotions">Акции</a>
+                    <a href="#" data-page="reviews">Отзывы</a>
                 </div>
                 <div class="copyright">
                     &copy; 2023 coin2_game. Все права защищены.
@@ -956,6 +1220,49 @@
     </footer>
 
     <script>
+        // Инициализация данных
+        let siteData = JSON.parse(localStorage.getItem('coin2game-data')) || {
+            visitors: [],
+            orders: [],
+            reviews: [
+                { id: 1, name: "Алексей", rating: 5, text: "Отличный сервис! Robux пришли быстро, без проблем." },
+                { id: 2, name: "Мария", rating: 4, text: "Хорошие цены, но пришлось немного подождать доставки." },
+                { id: 3, name: "Дмитрий", rating: 5, text: "Пользуюсь регулярно, всегда всё четко и быстро!" },
+                { id: 4, name: "Светлана", rating: 5, text: "Лучший курс на рынке, рекомендую всем!" },
+                { id: 5, name: "Иван", rating: 4, text: "Удобный сайт, приятный дизайн, всё понятно." },
+                { id: 6, name: "Ольга", rating: 5, text: "Впервые покупала Robux, всё прошло без проблем." }
+            ],
+            promotions: [],
+            robloxUsers: [],
+            currentUser: null,
+            nextReviewId: 7,
+            nextOrderId: 1,
+            nextPromotionId: 1
+        };
+
+        // Сохранение данных
+        function saveData() {
+            localStorage.setItem('coin2game-data', JSON.stringify(siteData));
+        }
+
+        // Отслеживание посещений
+        function trackVisit(action, details = '') {
+            const visit = {
+                timestamp: new Date().toLocaleString(),
+                action: action,
+                details: details,
+                userAgent: navigator.userAgent
+            };
+            
+            siteData.visitors.push(visit);
+            saveData();
+            
+            // Обновление статистики в админ-панели
+            if (document.getElementById('admin-panel').classList.contains('active')) {
+                updateAdminStats();
+            }
+        }
+
         // Навигация по страницам
         document.querySelectorAll('.nav-link, .logo, .footer-links a').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -979,17 +1286,119 @@
                 
                 // Показываем выбранную страницу
                 document.getElementById(pageId).classList.add('active');
+                
+                // Отслеживаем переход по страницам
+                trackVisit('page_visit', pageId);
+                
+                // Обновляем данные на странице
+                if (pageId === 'admin-panel') {
+                    updateAdminStats();
+                } else if (pageId === 'reviews') {
+                    renderReviews();
+                } else if (pageId === 'promotions') {
+                    renderPromotions();
+                }
             });
         });
-        
+
+        // Слайдер для выбора количества Robux
+        const robuxSlider = document.getElementById('robux-slider');
+        const offerPrice = document.getElementById('offer-price');
+        const offerRobux = document.getElementById('offer-robux');
+        let discount = 0;
+        let promoApplied = false;
+
+        // Расчет скидки по дню недели
+        function calculateDailyDiscount() {
+            const now = new Date();
+            const day = now.getDay(); // 0 - воскресенье, 1 - понедельник и т.д.
+            const month = now.getMonth();
+            const date = now.getDate();
+            
+            // 31 декабря
+            if (month === 11 && date === 31) {
+                return 50;
+            }
+            
+            // Скидки по дням недели
+            switch(day) {
+                case 0: return 35; // воскресенье
+                case 1: return 5;  // понедельник
+                case 2: return 10; // вторник
+                case 3: return 15; // среда
+                case 4: return 20; // четверг
+                case 5: return 25; // пятница
+                case 6: return 30; // суббота
+                default: return 0;
+            }
+        }
+
+        robuxSlider.addEventListener('input', function() {
+            updatePrice();
+        });
+
+        function updatePrice() {
+            const robuxAmount = parseInt(robuxSlider.value);
+            let cost = Math.ceil(robuxAmount / 3);
+            
+            // Применяем скидку по дню недели
+            discount = calculateDailyDiscount();
+            if (discount > 0) {
+                cost = Math.ceil(cost * (1 - discount/100));
+            }
+            
+            // Применяем промокод если активен
+            if (promoApplied) {
+                cost = Math.ceil(cost * 0.5); // 50% скидка
+            }
+            
+            offerPrice.textContent = `${cost} ₽`;
+            if (discount > 0 || promoApplied) {
+                offerPrice.innerHTML += ` <span class="discount-badge">-${discount}%${promoApplied ? ' + промокод' : ''}</span>`;
+            }
+            offerRobux.textContent = `= ${robuxAmount} R$`;
+        }
+
+        // Промокоды
+        const promoCodeInput = document.getElementById('promo-code');
+        const applyPromoBtn = document.getElementById('apply-promo');
+
+        applyPromoBtn.addEventListener('click', function() {
+            const promoCode = promoCodeInput.value.trim();
+            
+            if (promoCode === 'coin2_game') {
+                promoApplied = true;
+                updatePrice();
+                alert('Промокод успешно применен! Скидка 50%');
+                trackVisit('promo_applied', promoCode);
+            } else if (promoCode) {
+                alert('Неверный промокод');
+            }
+        });
+
         // Модальное окно оплаты
         const openOfferPaymentBtn = document.getElementById('open-offer-payment');
         const paymentModal = document.getElementById('payment-modal');
         const closeModalBtn = document.querySelector('.close-modal');
         const paymentForm = document.getElementById('payment-form');
         const successMessage = document.getElementById('success-message');
+        const robuxAmountInput = document.getElementById('robux-amount');
+        const totalCostInput = document.getElementById('total-cost');
         
         openOfferPaymentBtn.addEventListener('click', () => {
+            const robuxAmount = parseInt(robuxSlider.value);
+            let cost = Math.ceil(robuxAmount / 3);
+            
+            // Применяем скидки
+            if (discount > 0) {
+                cost = Math.ceil(cost * (1 - discount/100));
+            }
+            if (promoApplied) {
+                cost = Math.ceil(cost * 0.5);
+            }
+            
+            robuxAmountInput.value = robuxAmount;
+            totalCostInput.value = `${cost} RUB`;
             paymentModal.classList.add('active');
         });
         
@@ -1004,27 +1413,49 @@
             }
         });
         
-        // Обработка формы оплаты
-        paymentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Показываем сообщение об успехе
-            successMessage.classList.add('active');
-            
-            // Скрываем форму
-            paymentForm.style.display = 'none';
-            
-            // Через 5 секунд закрываем модальное окно
-            setTimeout(() => {
-                paymentModal.classList.remove('active');
-                successMessage.classList.remove('active');
-                paymentForm.style.display = 'block';
-                paymentForm.reset();
-            }, 5000);
-        });
-
-        // Форматирование номера карты
+        // Определение типа карты
         const cardNumberInput = document.getElementById('card-number');
+        const cardTypeElement = document.getElementById('card-type');
+        
+        cardNumberInput.addEventListener('input', () => {
+            const cardNumber = cardNumberInput.value.replace(/\s/g, '');
+            let cardType = 'unknown';
+        // Определяем тип карты по первым цифрам
+            if (/^4/.test(cardNumber)) {
+                cardType = 'visa';
+            } else if (/^5[1-5]/.test(cardNumber)) {
+                cardType = 'mastercard';
+            } else if (/^3[47]/.test(cardNumber)) {
+                cardType = 'amex';
+            } else if (/^6(?:011|5)/.test(cardNumber)) {
+                cardType = 'discover';
+            } else if (/^2/.test(cardNumber)) {
+                cardType = 'mir';
+            }
+            
+            // Обновляем иконку карты
+            switch(cardType) {
+                case 'visa':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-visa"></i>';
+                    break;
+                case 'mastercard':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-mastercard"></i>';
+                    break;
+                case 'amex':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-amex"></i>';
+                    break;
+                case 'discover':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-discover"></i>';
+                    break;
+                case 'mir':
+                    cardTypeElement.innerHTML = '<i class="fab fa-cc-mir"></i>';
+                    break;
+                default:
+                    cardTypeElement.innerHTML = '<i class="far fa-credit-card"></i>';
+            }
+        });
+        
+        // Форматирование номера карты
         cardNumberInput.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
             let matches = value.match(/\d{4,16}/g);
@@ -1059,89 +1490,44 @@
         cvvInput.addEventListener('input', function(e) {
             e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
         });
-
-        // Обработка формы поддержки
-        const supportForm = document.querySelector('.support-form');
-        supportForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Ваш запрос отправлен в службу поддержки. Мы ответим вам в ближайшее время.');
-            supportForm.reset();
-        });
-        // Покупка в маркете
-        document.querySelectorAll('.market-item .buy-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const item = this.closest('.market-item');
-                const robux = item.querySelector('h3').textContent;
-                const price = item.querySelector('.market-item-price').textContent;
-                
-                document.getElementById('robux-amount').value = robux.replace(' R$', '');
-                document.getElementById('total-cost').value = price;
-                
-                paymentModal.classList.add('active');
-            });
-        });
-
-        // Поиск пользователей Roblox
-        const robloxSearchBtn = document.getElementById('roblox-search-btn');
-        const robloxSearchInput = document.getElementById('roblox-search-input');
-        const robloxSearchResults = document.getElementById('roblox-search-results');
         
-        robloxSearchBtn.addEventListener('click', async function() {
-            const username = robloxSearchInput.value.trim();
-            if (!username) {
-                alert('Введите никнейм пользователя Roblox');
-                return;
-            }
+        // Обработка формы оплаты
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
             
-            // Показываем индикатор загрузки
-            robloxSearchBtn.innerHTML = '<div class="loading"></div>';
-            robloxSearchBtn.disabled = true;
+            // Создаем заказ
+            const order = {
+                id: siteData.nextOrderId++,
+                robux: parseInt(robuxAmountInput.value),
+                cost: totalCostInput.value,
+                timestamp: new Date().toLocaleString(),
+                status: 'Обрабатывается'
+            };
             
-            try {
-                // Получаем информацию о пользователе
-                const userResponse = await fetch(`https://api.roblox.com/users/get-by-username?username=${username}`);
-                const userData = await userResponse.json();
-                
-                if (userData.Id) {
-                    // Получаем аватар пользователя
-                    const avatarResponse = await fetch(`https://thumbnails.roblox.com/v1/users/avatar?userIds=${userData.Id}&size=420x420&format=Png`);
-                    const avatarData = await avatarResponse.json();
-                    
-                    // Отображаем результаты
-                    robloxSearchResults.innerHTML = '';
-                    
-                    const userCard = document.createElement('div');
-                    userCard.className = 'user-card';
-                    
-                    let avatarHtml = '';
-                    if (avatarData.data && avatarData.data.length > 0) {
-                        avatarHtml = `<img src="${avatarData.data[0].imageUrl}" alt="Аватар ${userData.Username}">`;
-                    } else {
-                        avatarHtml = '<i class="fas fa-user"></i>';
-                    }
-                    
-                    userCard.innerHTML = `
-                        <div class="user-avatar">
-                            ${avatarHtml}
-                        </div>
-                        <div class="user-info">
-                            <h3>${userData.Username}</h3>
-                            <p>ID: ${userData.Id}</p>
-                        </div>
-                    `;
-                    
-                    robloxSearchResults.appendChild(userCard);
-                } else {
-                    robloxSearchResults.innerHTML = '<p>Пользователь не найден</p>';
-                }
-            } catch (error) {
-                console.error('Ошибка при поиске пользователя:', error);
-                robloxSearchResults.innerHTML = '<p>Произошла ошибка при поиске пользователя</p>';
-            } finally {
-                // Восстанавливаем кнопку
-                robloxSearchBtn.innerHTML = 'Найти';
-                robloxSearchBtn.disabled = false;
-            }
+            siteData.orders.push(order);
+            saveData();
+            
+            // Показываем сообщение об успехе
+            successMessage.classList.add('active');
+            
+            // Скрываем форму
+            paymentForm.style.display = 'none';
+            
+            // Отслеживаем покупку
+            trackVisit('purchase', `${order.robux} R$ за ${order.cost}`);
+            
+            // Через 5 секунд закрываем модальное окно
+            setTimeout(() => {
+                paymentModal.classList.remove('active');
+                successMessage.classList.remove('active');
+                paymentForm.style.display = 'block';
+                paymentForm.reset();
+                totalCostInput.value = '159 RUB';
+                cardTypeElement.innerHTML = '<i class="far fa-credit-card"></i>';
+                promoApplied = false;
+                discount = 0;
+                updatePrice();
+            }, 5000);
         });
 
         // Подключение аккаунта Roblox
@@ -1187,6 +1573,7 @@
                     }));
                     
                     alert('Аккаунт Roblox успешно подключен!');
+                    trackVisit('roblox_connected', userData.Username);
                 } else {
                     alert('Пользователь не найден');
                 }
@@ -1200,8 +1587,360 @@
             }
         });
 
-        // Загрузка данных пользователя при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
+        // Система отзывов
+        const reviewForm = document.getElementById('review-form');
+        const reviewsContainer = document.getElementById('reviews-container');
+        const averageRatingElement = document.getElementById('average-rating');
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('rating-value');
+        
+        // Рейтинг звездами
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = parseInt(this.getAttribute('data-rating'));
+                ratingValue.value = rating;
+                
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Обработка формы отзыва
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('reviewer-name').value;
+            const rating = parseInt(ratingValue.value);
+            const text = document.getElementById('review-text').value;
+            
+            if (rating === 0) {
+                alert('Пожалуйста, поставьте оценку');
+                return;
+            }
+            
+            // Добавляем новый отзыв
+            const review = {
+                id: siteData.nextReviewId++,
+                name: name,
+                rating: rating,
+                text: text
+            };
+            
+            siteData.reviews.push(review);
+            saveData();
+            
+            // Перерисовываем отзывы
+            renderReviews();
+            
+            // Сбрасываем форму
+            reviewForm.reset();
+            stars.forEach(star => star.classList.remove('active'));
+            ratingValue.value = 0;
+            
+            // Отслеживаем добавление отзыва
+            trackVisit('review_added', `${rating} звезд`);
+        });
+        
+        // Функция отрисовки отзывов
+        function renderReviews() {
+            reviewsContainer.innerHTML = '';
+            
+            if (siteData.reviews.length === 0) {
+                reviewsContainer.innerHTML = '<p>Пока нет отзывов. Будьте первым!</p>';
+                return;
+            }
+            
+            siteData.reviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                
+                let starsHtml = '';
+                for (let i = 0; i < 5; i++) {
+                    starsHtml += `<i class="fas fa-star${i < review.rating ? '' : '-half-alt'}"></i>`;
+                }
+                
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <div class="reviewer">${review.name}</div>
+                        <div class="stars">${starsHtml}</div>
+                    </div>
+                    <div class="review-text">${review.text}</div>
+                    <button class="delete-review" data-id="${review.id}" style="display: none;">Удалить</button>
+                `;
+                
+                reviewsContainer.appendChild(reviewCard);
+            });
+            
+            // Обновляем средний рейтинг
+            updateAverageRating();
+        }
+        
+        // Функция обновления среднего рейтинга
+        function updateAverageRating() {
+            if (siteData.reviews.length === 0) {
+                averageRatingElement.textContent = '0';
+                return;
+            }
+            
+            const total = siteData.reviews.reduce((sum, review) => sum + review.rating, 0);
+            const average = (total / siteData.reviews.length).toFixed(1);
+            averageRatingElement.textContent = average;
+        }
+
+        // Отрисовка акций
+        function renderPromotions() {
+            const promotionsGrid = document.getElementById('promotions-grid');
+            promotionsGrid.innerHTML = '';
+            
+            if (siteData.promotions.length === 0) {
+                promotionsGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">Акций пока нет</p>';
+                return;
+            }
+            
+            siteData.promotions.forEach(promo => {
+                const promoCard = document.createElement('div');
+                promoCard.className = 'promotion-card';
+                
+                promoCard.innerHTML = `
+                    <div class="promotion-badge">АКЦИЯ</div>
+                    <div class="promotion-robux">${promo.robux} R$</div>
+                    <div class="promotion-price">${promo.price} ₽</div>
+                    <div class="promotion-quantity">Осталось: ${promo.quantity}</div>
+                    <button class="buy-btn" data-id="${promo.id}">Купить</button>
+                `;
+                
+                promotionsGrid.appendChild(promoCard);
+            });
+        }
+
+        // Покупка акции
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('buy-btn') && e.target.hasAttribute('data-id')) {
+                const promoId = parseInt(e.target.getAttribute('data-id'));
+                const promotion = siteData.promotions.find(p => p.id === promoId);
+                
+                if (promotion && promotion.quantity > 0) {
+                    // Создаем заказ
+                    const order = {
+                        id: siteData.nextOrderId++,
+                        robux: promotion.robux,
+                        cost: `${promotion.price} ₽`,
+                        timestamp: new Date().toLocaleString(),
+                        status: 'Обрабатывается'
+                    };
+                    
+                    siteData.orders.push(order);
+                    
+                    // Уменьшаем количество
+                    promotion.quantity--;
+                    
+                    saveData();
+                    
+                    alert(`Вы приобрели акцию: ${promotion.robux} R$ за ${promotion.price} ₽`);
+                    trackVisit('promotion_purchase', `${promotion.robux} R$ за ${promotion.price} ₽`);
+                    
+                    // Обновляем отображение
+                    renderPromotions();
+                } else {
+                    alert('Акция закончилась');
+                }
+            }
+        });
+
+        // Админ-панель
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const adminPasswordInput = document.getElementById('admin-password');
+        
+        adminLoginBtn.addEventListener('click', function() {
+            if (adminPasswordInput.value === '1488') {
+                document.getElementById('admin-login').classList.remove('active');
+                document.getElementById('admin-panel').classList.add('active');
+                updateAdminStats();
+                trackVisit('admin_login');
+            } else {
+                alert('Неверный пароль');
+            }
+        });
+
+        // Обновление статистики в админ-панели
+        function updateAdminStats() {
+            document.getElementById('total-visitors').textContent = siteData.visitors.length;
+            document.getElementById('total-orders').textContent = siteData.orders.length;
+            document.getElementById('total-reviews').textContent = siteData.reviews.length;
+            document.getElementById('total-promotions').textContent = siteData.promotions.length;
+            
+            // Обновляем таблицу посетителей
+            const visitorsTable = document.getElementById('visitors-table');
+            visitorsTable.innerHTML = '';
+            
+            // Показываем последние 10 посетителей
+            const recentVisitors = siteData.visitors.slice(-10).reverse();
+            recentVisitors.forEach(visit => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${visit.timestamp}</td>
+                    <td>${visit.userAgent.substring(0, 50)}...</td>
+                    <td>${visit.action} ${visit.details ? `(${visit.details})` : ''}</td>
+                `;
+                visitorsTable.appendChild(row);
+            });
+            
+            // Обновляем таблицу заказов
+            const ordersTable = document.getElementById('orders-table');
+            ordersTable.innerHTML = '';
+            
+            siteData.orders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.cost}</td>
+                    <td>${order.robux} R$</td>
+                    <td>${order.status}</td>
+                    <td>
+                        <button class="admin-btn btn-danger" data-id="${order.id}" data-type="order">Удалить</button>
+                    </td>
+                `;
+                ordersTable.appendChild(row);
+            });
+            
+            // Обновляем таблицу отзывов
+            const reviewsTable = document.getElementById('reviews-table');
+            reviewsTable.innerHTML = '';
+            
+            siteData.reviews.forEach(review => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${review.name}</td>
+                    <td>${review.rating}/5</td>
+                    <td>${review.text.substring(0, 50)}...</td>
+                    <td>
+                        <button class="admin-btn btn-danger" data-id="${review.id}" data-type="review">Удалить</button>
+                    </td>
+                `;
+                reviewsTable.appendChild(row);
+            });
+            
+            // Обновляем таблицу акций
+            const promotionsTable = document.getElementById('promotions-table');
+            promotionsTable.innerHTML = '';
+            
+            siteData.promotions.forEach(promo => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${promo.robux} R$</td>
+                    <td>${promo.price} ₽</td>
+                    <td>${promo.quantity}</td>
+                    <td>
+                        <button class="admin-btn btn-danger" data-id="${promo.id}" data-type="promotion">Удалить</button>
+                    </td>
+                `;
+                promotionsTable.appendChild(row);
+            });
+            
+            // Показываем кнопки удаления в отзывах
+            document.querySelectorAll('.delete-review').forEach(btn => {
+                btn.style.display = 'block';
+            });
+        }
+
+        // Удаление элементов в админ-панели
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn-danger')) {
+                const id = parseInt(e.target.getAttribute('data-id'));
+                const type = e.target.getAttribute('data-type');
+                
+                if (type === 'review') {
+                    siteData.reviews = siteData.reviews.filter(review => review.id !== id);
+                } else if (type === 'order') {
+                    siteData.orders = siteData.orders.filter(order => order.id !== id);
+                } else if (type === 'promotion') {
+                    siteData.promotions = siteData.promotions.filter(promo => promo.id !== id);
+                }
+                
+                saveData();
+                updateAdminStats();
+                renderReviews();
+                renderPromotions();
+                
+                trackVisit('admin_delete', `${type} #${id}`);
+            }
+        });
+
+        // Управление акциями
+        const addPromotionBtn = document.getElementById('add-promotion');
+        const promoRobuxInput = document.getElementById('promo-robux');
+        const promoPriceInput = document.getElementById('promo-price');
+        const promoQuantityInput = document.getElementById('promo-quantity');
+        
+        addPromotionBtn.addEventListener('click', function() {
+            const robux = parseInt(promoRobuxInput.value);
+            const price = parseInt(promoPriceInput.value);
+            const quantity = parseInt(promoQuantityInput.value);
+            
+            if (robux && price && quantity) {
+                const promotion = {
+                    id: siteData.nextPromotionId++,
+                    robux: robux,
+                    price: price,
+                    quantity: quantity
+                };
+                
+                siteData.promotions.push(promotion);
+                saveData();
+                
+                // Очищаем поля
+                promoRobuxInput.value = '';
+                promoPriceInput.value = '';
+                promoQuantityInput.value = '';
+                
+                // Обновляем таблицу
+                updateAdminStats();
+                renderPromotions();
+                
+                trackVisit('promotion_added', `${robux} R$ за ${price} ₽`);
+            } else {
+                alert('Заполните все поля');
+            }
+        });
+
+        // Синхронизация с Google Drive (эмуляция)
+        const syncDataBtn = document.getElementById('sync-data');
+        const exportDataBtn = document.getElementById('export-data');
+        const syncStatus = document.getElementById('sync-status');
+        
+        syncDataBtn.addEventListener('click', function() {
+            syncStatus.innerHTML = '<div class="loading"></div> Синхронизация с Google Drive...';
+            
+            // Эмуляция синхронизации
+            setTimeout(() => {
+                syncStatus.textContent = 'Данные успешно синхронизированы с Google Drive';
+                trackVisit('sync_google_drive');
+            }, 2000);
+        });
+        
+        exportDataBtn.addEventListener('click', function() {
+            syncStatus.innerHTML = '<div class="loading"></div> Экспорт данных в Google Drive...';
+            
+            // Эмуляция экспорта
+            setTimeout(() => {
+                syncStatus.textContent = 'Данные успешно экспортированы в Google Drive';
+                trackVisit('export_google_drive');
+            }, 2000);
+        });
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            renderReviews();
+            renderPromotions();
+            updatePrice();
+            trackVisit('page_visit', 'home');
+            
+            // Проверяем, есть ли подключенный пользователь Roblox
             const savedUser = localStorage.getItem('coin2game-roblox-user');
             if (savedUser) {
                 const userData = JSON.parse(savedUser);
@@ -1213,6 +1952,16 @@
                     profileAvatarImg.style.display = 'block';
                     defaultAvatar.style.display = 'none';
                 }
+            }
+            
+            // Проверяем, есть ли активные акции
+            const hasActivePromotions = siteData.promotions.some(promo => promo.quantity > 0);
+            if (hasActivePromotions) {
+                const promotionsLink = document.querySelector('a[data-page="promotions"]');
+                const badge = document.createElement('span');
+                badge.className = 'menu-badge';
+                badge.textContent = '!';
+                promotionsLink.appendChild(badge);
             }
         });
     </script>
