@@ -802,38 +802,38 @@
             font-size: 14px;
         }
 
-              /* Fireworks Animation */
+                /* Fireworks Animation */
         .fireworks-container {
             position: fixed;
-            top: 100;
-            left: 100;
-            width: 1000%;
-            height: 1000%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 20000;
+            z-index: 2000;
             display: none;
         }
 
         .firework {
             position: absolute;
-            width: 25px;
-            height: 25px;
-            border-radius: 500%;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
             pointer-events: none;
         }
 
         .firework::before {
             content: '';
             position: absolute;
-            width: 1000%;
-            height: 1000%;
+            width: 100%;
+            height: 100%;
             background-color: inherit;
-            border-radius: 500%;
+            border-radius: 50%;
             animation: firework-explode 1s ease-out forwards;
         }
 
         @keyframes firework-explode {
-            100% {
+            0% {
                 transform: translate(0, 0);
                 opacity: 1;
             }
@@ -964,7 +964,39 @@
             text-decoration: underline;
         }
 
-        
+        /* Profile History */
+        .profile-history {
+            margin-top: 30px;
+        }
+
+        .profile-history h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .history-table th, .history-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .history-table th {
+            background-color: var(--dark-surface);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .history-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         /* Login Section */
@@ -1012,39 +1044,50 @@
             margin-bottom: 5px;
         }
 
-        /* Profile History */
-        .profile-history {
-            margin-top: 30px;
+        /* Ranks Section */
+        .ranks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .profile-history h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--primary);
-            border-bottom: 1px solid #444;
-            padding-bottom: 10px;
-        }
-
-        .history-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .history-table th, .history-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-        }
-
-        .history-table th {
+        .rank-card {
             background-color: var(--dark-surface);
-            color: var(--primary);
-            font-weight: 600;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
         }
 
-        .history-table tr:hover {
-            background-color: rgba(255, 255, 255, 0.05);
+        .rank-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .rank-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .rank-requirements {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         /* Responsive Styles */
@@ -1091,12 +1134,12 @@
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
 
-            .market-grid {
+            .support-contacts {
                 grid-template-columns: 1fr;
             }
 
-            .support-contacts {
-                grid-template-columns: 1fr;
+            .ranks-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1125,6 +1168,10 @@
             .promotions-grid {
                 grid-template-columns: 1fr;
             }
+
+            .ranks-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1142,7 +1189,7 @@
 
     <main>
         <div class="container">
-            <!-навигатор -->
+            <!-- Горизонтальный навигатор -->
             <div class="horizontal-nav">
                 <div class="nav-container">
                     <div class="nav-item">
@@ -1158,9 +1205,7 @@
                         </a>
                     </div>
                     <div class="nav-item">
-                        <a href="#" class="nav-link" data-page="market">
-                            <i class="fas
- class="nav-link" data-page="support">
+                        <a href="#" class="nav-link" data-page="support">
                             <i class="fas fa-headset"></i>
                             Поддержка
                         </a>
@@ -1252,7 +1297,6 @@
                 </div>
             </section>
 
-
             <!-- Поддержка -->
             <section id="support" class="page">
                 <div class="support-section">
@@ -1263,12 +1307,12 @@
                         <div class="support-contact">
                             <i class="fab fa-vk"></i>
                             <h3>Вконтакте</h3>
-                            <a href="сам потом" target="сам</a>
+                            <a href="https://vk.com/kupit_robux_koroblox" target="_blank">https://vk.com/kupit_robux_koroblox</a>
                         </div>
                         <div class="support-contact">
                             <i class="fab fa-telegram"></i>
                             <h3>Telegram</h3>
-                            <a href="ррпомо" target="сам</a>
+                            <a href="https://t.me/koroblox_store" target="_blank">https://t.me/koroblox_store</a>
                         </div>
                     </div>
                 </div>
@@ -1301,11 +1345,11 @@
                             <div class="form-group">
                                 <label>Оценка</label>
                                 <div class="star-rating">
-                                    <span class="star" data-rating="1">❤️</span>
-                                    <span class="star" data-rating="2">❤️</span>
-                                    <span class="star" data-rating="3">❤️</span>
-                                    <span class="star" data-rating="4">❤️</span>
-                                    <span class="star" data-rating="5">❤️</span>
+                                    <span class="star" data-rating="1">★</span>
+                                    <span class="star" data-rating="2">★</span>
+                                    <span class="star" data-rating="3">★</span>
+                                    <span class="star" data-rating="4">★</span>
+                                    <span class="star" data-rating="5">★</span>
                                 </div>
                                 <input type="hidden" id="rating-value" value="0">
                             </div>
@@ -1441,6 +1485,34 @@
                     </div>
 
                     <div class="admin-section">
+                        <h3>Управление рангами</h3>
+                        <div class="form-group">
+                            <input type="text" id="rank-name" class="form-control" placeholder="Название ранга">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="rank-requirement" class="form-control" placeholder="Требуемая сумма покупок">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="rank-discount" class="form-control" placeholder="Скидка в %">
+                        </div>
+                        <button class="admin-btn btn-primary" id="add-rank">Добавить ранг</button>
+                        
+<table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Ранг</th>
+                                    <th>Требование</th>
+                                    <th>Скидка</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ranks-table">
+                                <!-- Данные о рангах -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-section">
                         <h3>Синхронизация с Google Drive</h3>
                         <div class="admin-actions">
                             <button class="admin-btn btn-primary" id="sync-data">Синхронизировать данные</button>
@@ -1469,6 +1541,7 @@
             </section>
         </div>
     </main>
+
     <!-- Модальное окно оплаты -->
     <div class="modal" id="payment-modal">
         <div class="modal-content">
@@ -1535,7 +1608,7 @@
                     <a href="#" data-page="support">Поддержка</a>
                 </div>
                 <div class="copyright">
-                    &copy; 2025 coin2_game. Все права защищены.
+                    &copy; 2023 coin2_game. Все права защищены.
                 </div>
             </div>
         </div>
@@ -1547,19 +1620,27 @@
             visitors: [],
             orders: [],
             reviews: [
-                { id: 1, name: "Илья", rating: 5, text: "Отличный сервис! Robux пришли быстро, без проблем." },
-                { id: 2, name: "Илья", rating: 4, text: "Хорошие цены, но пришлось немного подождать доставки." },
-                { id: 3, name: "Илья", rating: 5, text: "Пользуюсь регулярно, всегда всё четко и быстро!" },
+                { id: 1, name: "Алексей", rating: 5, text: "Отличный сервис! Robux пришли быстро, без проблем." },
+                { id: 2, name: "Мария", rating: 4, text: "Хорошие цены, но пришлось немного подождать доставки." },
+                { id: 3, name: "Дмитрий", rating: 5, text: "Пользуюсь регулярно, всегда всё четко и быстро!" },
                 { id: 4, name: "Светлана", rating: 5, text: "Лучший курс на рынке, рекомендую всем!" },
-                { id: 5, name: "Илья", rating: 4, text: "Удобный сайт, приятный дизайн, всё понятно." },
-                { id: 6, name: "Илья", rating: 5, text: "Впервые покупала Robux, всё прошло без проблем." }
+                { id: 5, name: "Иван", rating: 4, text: "Удобный сайт, приятный дизайн, всё понятно." },
+                { id: 6, name: "Ольга", rating: 5, text: "Впервые покупала Robux, всё прошло без проблем." }
             ],
             promotions: [],
+            ranks: [
+                { id: 1, name: "Новичок", requirement: 0, discount: 0 },
+                { id: 2, name: "Активный", requirement: 1000, discount: 5 },
+                { id: 3, name: "Постоянный", requirement: 5000, discount: 10 },
+                { id: 4, name: "VIP", requirement: 10000, discount: 15 },
+                { id: 5, name: "Легенда", requirement: 25000, discount: 20 }
+            ],
             robloxUsers: [],
             currentUser: null,
             nextReviewId: 7,
             nextOrderId: 1,
-            nextPromotionId: 1
+            nextPromotionId: 1,
+            nextRankId: 6
         };
 
         // Сохранение данных
@@ -1781,7 +1862,7 @@
         });
         
         // Форматирование номера карты
-        cardNumberInput.addEventListener('input', function(e) {
+       cardNumberInput.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
             let matches = value.match(/\d{4,16}/g);
             let match = matches && matches[0] || '';
@@ -1816,25 +1897,25 @@
             e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
         });
         
-        // Анимация фейерверка
+        // Анимация фейерверка (100 фейерверков)
         function createFireworks(robuxCount) {
             const container = document.getElementById('fireworks-container');
             container.style.display = 'block';
             
-            // Количество фейерверков зависит от количества купленных Robux
-            const fireworkCount = Math.min(robuxCount / 100, 30);
+            // Всегда создаем 100 фейерверков
+            const fireworkCount = 100;
             
             for (let i = 0; i < fireworkCount; i++) {
                 setTimeout(() => {
                     createFirework(container);
-                }, i * 100);
+                }, i * 50); // Более быстрая генерация для 100 фейерверков
             }
             
             // Скрываем контейнер после завершения анимации
             setTimeout(() => {
                 container.style.display = 'none';
                 container.innerHTML = '';
-            }, 3000);
+            }, 5000);
         }
         
         function createFirework(container) {
@@ -1870,18 +1951,18 @@
             }, 1000);
         }
         
-        // Анимация дождя из Robux
+        // Анимация дождя из Robux (много Robux)
         function createRobuxRain(robuxCount) {
             const container = document.getElementById('robux-rain');
             container.style.display = 'block';
             
-            // Количество падающих Robux зависит от количества купленных
-            const robuxDropCount = Math.min(robuxCount / 10, 100);
+            // Всегда создаем много падающих Robux (150)
+            const robuxDropCount = 150;
             
             for (let i = 0; i < robuxDropCount; i++) {
                 setTimeout(() => {
                     createRobuxDrop(container);
-                }, i * 50);
+                }, i * 30); // Более быстрая генерация для большого количества
             }
             
             // Скрываем контейнер после завершения анимации
@@ -1935,7 +2016,7 @@
             siteData.orders.push(order);
             saveData();
             
-            // Запускаем анимации
+            // Запускаем анимации (100 фейерверков и много Robux)
             createFireworks(order.robux);
             createRobuxRain(order.robux);
             
@@ -1950,7 +2031,8 @@
             
             // Обновляем историю покупок
             renderPurchaseHistory();
-                 // Через 5 секунд закрываем модальное окно
+            
+            // Через 5 секунд закрываем модальное окно
             setTimeout(() => {
                 paymentModal.classList.remove('active');
                 successMessage.classList.remove('active');
@@ -2170,8 +2252,7 @@
             // Обновляем средний рейтинг
             updateAverageRating();
         }
-        
-        // Функция обновления среднего рейтинга
+                // Функция обновления среднего рейтинга
         function updateAverageRating() {
             if (siteData.reviews.length === 0) {
                 averageRatingElement.textContent = '0';
@@ -2254,7 +2335,7 @@
                     
                     saveData();
                     
-                    // Запускаем анимации
+                    // Запускаем анимации (100 фейерверков и много Robux)
                     createFireworks(promotion.robux);
                     createRobuxRain(promotion.robux);
                     
@@ -2360,6 +2441,23 @@
                 promotionsTable.appendChild(row);
             });
             
+            // Обновляем таблицу рангов
+            const ranksTable = document.getElementById('ranks-table');
+            ranksTable.innerHTML = '';
+            
+            siteData.ranks.forEach(rank => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${rank.name}</td>
+                    <td>${rank.requirement} ₽</td>
+                    <td>${rank.discount}%</td>
+                    <td>
+                        <button class="admin-btn btn-danger" data-id="${rank.id}" data-type="rank">Удалить</button>
+                    </td>
+                `;
+                ranksTable.appendChild(row);
+            });
+            
             // Показываем кнопки удаления в отзывах
             document.querySelectorAll('.delete-review').forEach(btn => {
                 btn.style.display = 'block';
@@ -2378,6 +2476,8 @@
                     siteData.orders = siteData.orders.filter(order => order.id !== id);
                 } else if (type === 'promotion') {
                     siteData.promotions = siteData.promotions.filter(promo => promo.id !== id);
+                } else if (type === 'rank') {
+                    siteData.ranks = siteData.ranks.filter(rank => rank.id !== id);
                 }
                 
                 saveData();
@@ -2390,7 +2490,7 @@
             }
         });
 
-               // Управление акциями
+        // Управление акциями
         const addPromotionBtn = document.getElementById('add-promotion');
         const promoRobuxInput = document.getElementById('promo-robux');
         const promoPriceInput = document.getElementById('promo-price');
@@ -2424,6 +2524,42 @@
                 trackVisit('promotion_added', `${robux} R$ за ${price} ₽`);
             } else {
                 alert('Заполните все поля');
+            }
+        });
+
+        // Управление рангами
+        const addRankBtn = document.getElementById('add-rank');
+        const rankNameInput = document.getElementById('rank-name');
+        const rankRequirementInput = document.getElementById('rank-requirement');
+        const rankDiscountInput = document.getElementById('rank-discount');
+        
+        addRankBtn.addEventListener('click', function() {
+            const name = rankNameInput.value.trim();
+            const requirement = parseInt(rankRequirementInput.value);
+            const discount = parseInt(rankDiscountInput.value);
+            
+            if (name && !isNaN(requirement) && !isNaN(discount)) {
+                const rank = {
+                    id: siteData.nextRankId++,
+                    name: name,
+                    requirement: requirement,
+                    discount: discount
+                };
+                
+                siteData.ranks.push(rank);
+                saveData();
+                
+                // Очищаем поля
+                rankNameInput.value = '';
+                rankRequirementInput.value = '';
+                rankDiscountInput.value = '';
+                
+                // Обновляем таблицу
+                updateAdminStats();
+                
+                trackVisit('rank_added', `${name} (${requirement} ₽, ${discount}%)`);
+            } else {
+                alert('Заполните все поля корректно');
             }
         });
 
