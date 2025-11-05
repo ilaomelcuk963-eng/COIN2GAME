@@ -1803,30 +1803,19 @@
                     <div class="support-contacts">
                         <div class="support-contact">
                             <div class="contact-icon">
-                                <i class="fab fa-vk"></i>
+                                <i class="fab fa-telegram"></i>
                             </div>
-                            <h3>Вконтакте</h3>
-                            <!-- ВСТАВЬТЕ ВАШУ ССЫЛКУ ВКОНТАКТЕ ЗДЕСЬ -->
-                            <a href="https://vk.com/YOUR_VK_LINK" target="_blank">@your_vk_link</a>
-                            <p>Ответ в течение 5 минут</p>
+                            <h3>Telegram Канал</h3>
+                            <a href="https://t.me/coin2game_group" target="_blank">@coin2game_group</a>
+                            <p>Новости и обновления</p>
                         </div>
                         <div class="support-contact">
                             <div class="contact-icon">
                                 <i class="fab fa-telegram"></i>
                             </div>
-                            <h3>Telegram</h3>
-                            <!-- ВСТАВЬТЕ ВАШУ ССЫЛКУ TELEGRAM ЗДЕСЬ -->
-                            <a href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank">@your_telegram_link</a>
-                            <p>Мгновенная связь</p>
-                        </div>
-                        <div class="support-contact">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <h3>Email</h3>
-                            <!-- ВСТАВЬТЕ ВАШ EMAIL ЗДЕСЬ -->
-                            <a href="mailto:your_email@example.com">your_email@example.com</a>
-                            <p>Ответ в течение часа</p>
+                            <h3>Telegram Поддержка</h3>
+                            <a href="https://t.me/coin2game_support" target="_blank">@coin2game_support</a>
+                            <p>Мгновенная помощь 24/7</p>
                         </div>
                     </div>
                 </div>
@@ -2128,28 +2117,51 @@
             
             // Загрузка отзывов из облачного хранилища
             loadReviewsFromCloud();
+            // Загрузка истории покупок
+            loadPurchaseHistory();
         });
 
-        // Функция для загрузки отзывов из облачного хранилища
+        // Функция для загрузки отзывов из Яндекс.Диска
         async function loadReviewsFromCloud() {
             try {
-                // ВСТАВЬТЕ ВАШ IP-АДРЕС СЕРВЕРА ЗДЕСЬ
-                const serverIP = "YOUR_SERVER_IP_HERE";
+                // ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ЯНДЕКС.ДИСК ДЛЯ ОТЗЫВОВ ЗДЕСЬ
+                const yandexDiskReviewsURL = "YOUR_YANDEX_DISK_REVIEWS_LINK_HERE";
                 
-                const response = await fetch(`http://${serverIP}/api/reviews`);
+                const response = await fetch(yandexDiskReviewsURL);
                 if (response.ok) {
                     const reviews = await response.json();
                     siteData.reviews = reviews;
                     renderReviews();
                     updateAverageRating();
                 } else {
-                    // Если сервер недоступен, загружаем демо-отзывы
+                    // Если Яндекс.Диск недоступен, загружаем демо-отзывы
                     loadDemoReviews();
                 }
             } catch (error) {
                 console.error("Ошибка загрузки отзывов:", error);
-                // Если сервер недоступен, загружаем демо-отзывы
+                // Если Яндекс.Диск недоступен, загружаем демо-отзывы
                 loadDemoReviews();
+            }
+        }
+
+        // Функция для загрузки истории покупок из Яндекс.Диска
+        async function loadPurchaseHistory() {
+            try {
+                // ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ЯНДЕКС.ДИСК ДЛЯ ИСТОРИИ ПОКУПОК ЗДЕСЬ
+                const yandexDiskPurchasesURL = "YOUR_YANDEX_DISK_PURCHASES_LINK_HERE";
+                
+                const response = await fetch(yandexDiskPurchasesURL);
+                if (response.ok) {
+                    const purchases = await response.json();
+                    siteData.orders = purchases;
+                    renderPurchaseHistory();
+                } else {
+                    // Если Яндекс.Диск недоступен, загружаем пустую историю
+                    renderPurchaseHistory();
+                }
+            } catch (error) {
+                console.error("Ошибка загрузки истории покупок:", error);
+                renderPurchaseHistory();
             }
         }
 
@@ -2183,14 +2195,14 @@
             updateAverageRating();
         }
 
-        // Функция для сохранения отзывов в облачное хранилище
+        // Функция для сохранения отзывов в Яндекс.Диск
         async function saveReviewsToCloud() {
             try {
-                // ВСТАВЬТЕ ВАШ IP-АДРЕС СЕРВЕРА ЗДЕСЬ
-                const serverIP = "YOUR_SERVER_IP_HERE";
+                // ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ЯНДЕКС.ДИСК ДЛЯ ОТЗЫВОВ ЗДЕСЬ
+                const yandexDiskReviewsURL = "YOUR_YANDEX_DISK_REVIEWS_LINK_HERE";
                 
-                const response = await fetch(`http://${serverIP}/api/reviews`, {
-                    method: 'POST',
+                const response = await fetch(yandexDiskReviewsURL, {
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -2203,6 +2215,50 @@
             } catch (error) {
                 console.error("Ошибка сохранения отзывов:", error);
             }
+        }
+
+        // Функция для сохранения истории покупок в Яндекс.Диск
+        async function savePurchaseHistory() {
+            try {
+                // ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ЯНДЕКС.ДИСК ДЛЯ ИСТОРИИ ПОКУПОК ЗДЕСЬ
+                const yandexDiskPurchasesURL = "YOUR_YANDEX_DISK_PURCHASES_LINK_HERE";
+                
+                const response = await fetch(yandexDiskPurchasesURL, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(siteData.orders)
+                });
+                
+                if (!response.ok) {
+                    console.error("Ошибка сохранения истории покупок");
+                }
+            } catch (error) {
+                console.error("Ошибка сохранения истории покупок:", error);
+            }
+        }
+
+        // Функция для отображения истории покупок
+        function renderPurchaseHistory() {
+            const historyTable = document.getElementById('purchase-history');
+            historyTable.innerHTML = '';
+            
+            if (siteData.orders.length === 0) {
+                historyTable.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-secondary);">Пока нет покупок</td></tr>';
+                return;
+            }
+            
+            siteData.orders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.date}</td>
+                    <td>${order.type}</td>
+                    <td>${order.amount} R$</td>
+                    <td style="color: ${order.status === 'Завершено' ? 'var(--success)' : 'var(--warning)'}">${order.status}</td>
+                `;
+                historyTable.appendChild(row);
+            });
         }
 
         // Долгая анимация дождя Robux
@@ -2377,7 +2433,7 @@
                 });
             });
 
-            // Обработка покупки
+            // Обработка покупки - перенаправление на YouTube
             document.getElementById('payment-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 processPurchase();
@@ -2388,6 +2444,26 @@
             });
 
             function processPurchase() {
+                // Перенаправляем на YouTube
+                window.open('https://www.youtube.com/', '_blank');
+                
+                // Добавляем запись о покупке
+                const newOrder = {
+                    id: siteData.nextOrderId++,
+                    date: new Date().toLocaleDateString(),
+                    type: 'Покупка Robux',
+                    amount: parseInt(document.getElementById('robux-amount').value),
+                    status: 'Завершено'
+                };
+                
+                siteData.orders.push(newOrder);
+                
+                // Сохраняем историю покупок в Яндекс.Диск
+                savePurchaseHistory();
+                
+                // Обновляем отображение истории
+                renderPurchaseHistory();
+                
                 // Показываем анимации
                 createExtendedRobuxRain(400);
                 createConfetti();
@@ -2449,7 +2525,7 @@
                 
                 siteData.reviews.push(review);
                 
-                // Сохраняем в облачное хранилище
+                // Сохраняем в Яндекс.Диск
                 saveReviewsToCloud();
                 
                 // Перерисовываем отзывы
@@ -2530,6 +2606,26 @@
                     const promotion = siteData.promotions.find(p => p.id === promoId);
                     
                     if (promotion && promotion.quantity > 0) {
+                        // Перенаправляем на YouTube
+                        window.open('https://www.youtube.com/', '_blank');
+                        
+                        // Добавляем запись о покупке
+                        const newOrder = {
+                            id: siteData.nextOrderId++,
+                            date: new Date().toLocaleDateString(),
+                            type: 'Акция Robux',
+                            amount: promotion.robux,
+                            status: 'Завершено'
+                        };
+                        
+                        siteData.orders.push(newOrder);
+                        
+                        // Сохраняем историю покупок в Яндекс.Диск
+                        savePurchaseHistory();
+                        
+                        // Обновляем отображение истории
+                        renderPurchaseHistory();
+                        
                         // Запускаем анимации
                         createExtendedRobuxRain(promotion.robux);
                         createConfetti();
