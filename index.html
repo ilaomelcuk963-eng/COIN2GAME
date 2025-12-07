@@ -973,6 +973,120 @@
             background: var(--neon-pink);
         }
 
+        /* Стили для системы отзывов */
+        .review-form {
+            background: rgba(37, 37, 37, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .review-form h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            font-size: 2rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .star:hover ~ .star {
+            color: #666;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-item {
+            background: rgba(37, 37, 37, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.5s ease;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .review-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .review-rating {
+            color: #FFD700;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            color: var(--text);
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        .no-reviews {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Анимации уведомлений */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -1537,12 +1651,12 @@
 
             <!-- Остальные секции (профиль, поддержка, акции, отзывы) -->
             <section id="profile" class="page">
-                <div class="profile-section floating">
+                <div class="profile-section floating" style="background: rgba(37, 37, 37, 0.8); padding: 40px; border-radius: 20px; max-width: 500px; margin: 0 auto;">
                     <h2>👤 Ваш профиль</h2>
-                    <div class="profile-info">
+                    <div class="profile-info" style="margin-bottom: 30px;">
                         <h3 id="profile-username">Войдите в аккаунт Roblox</h3>
-                        <div class="balance-display">
-                            <i class="fas fa-wallet"></i>
+                        <div class="balance-display" style="display: flex; align-items: center; gap: 10px; margin-top: 15px; font-size: 1.2rem;">
+                            <i class="fas fa-wallet" style="color: var(--premium-gold);"></i>
                             <span>Баланс: <strong id="profile-balance">0 R$</strong></span>
                         </div>
                     </div>
@@ -1554,22 +1668,89 @@
             </section>
 
             <section id="support" class="page">
-                <div class="support-section floating">
-                    <h2>💬 Контакты и техподдержка</h2>
-                    <p>Наша команда готова помочь вам 24/7. Свяжитесь с нами любым удобным способом!</p>
+                <div class="support-section floating" style="background: rgba(37, 37, 37, 0.8); padding: 40px; border-radius: 20px; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: var(--primary); margin-bottom: 20px;">💬 Контакты и техподдержка</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">Наша команда готова помочь вам 24/7. Свяжитесь с нами любым удобным способом!</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <i class="fab fa-telegram" style="color: #0088cc; font-size: 1.5rem;"></i>
+                            <div>
+                                <h4 style="color: var(--text); margin-bottom: 5px;">Telegram</h4>
+                                <p style="color: var(--text-secondary);">@coin2game_support</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <i class="fas fa-envelope" style="color: var(--accent); font-size: 1.5rem;"></i>
+                            <div>
+                                <h4 style="color: var(--text); margin-bottom: 5px;">Email</h4>
+                                <p style="color: var(--text-secondary);">support@coin2game.com</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <section id="promotions" class="page">
-                <div class="promotions-section">
-                    <h2>🎁 Специальные акции</h2>
-                    <p class="section-subtitle">Ограниченные предложения на покупку Robux</p>
+                <div class="promotions-section" style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="color: var(--primary); text-align: center; margin-bottom: 40px;">🎁 Специальные акции</h2>
+                    <p class="section-subtitle" style="color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 1.1rem;">Ограниченные предложения на покупку Robux</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: rgba(37, 37, 37, 0.8); padding: 25px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h4 style="color: var(--premium-gold); margin-bottom: 15px;">🎯 Первая покупка</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 15px;">Скидка 10% на первую покупку Robux</p>
+                            <div style="background: var(--accent); color: white; padding: 5px 10px; border-radius: 10px; display: inline-block; font-size: 0.9rem;">Активно</div>
+                        </div>
+                        
+                        <div style="background: rgba(37, 37, 37, 0.8); padding: 25px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h4 style="color: var(--premium-gold); margin-bottom: 15px;">💰 Кэшбэк 5%</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 15px;">Получите 5% кэшбэка на следующую покупку</p>
+                            <div style="background: var(--accent); color: white; padding: 5px 10px; border-radius: 10px; display: inline-block; font-size: 0.9rem;">Активно</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
+            <!-- Обновленная секция отзывов -->
             <section id="reviews" class="page">
-                <div class="reviews-section">
-                    <h2>⭐ Отзывы наших клиентов</h2>
+                <div class="reviews-section" style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="color: var(--primary); text-align: center; margin-bottom: 40px;">⭐ Отзывы наших клиентов</h2>
+                    
+                    <!-- Форма отправки отзыва -->
+                    <div class="review-form floating">
+                        <h3>Оставить отзыв</h3>
+                        <form id="reviewForm">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <input type="text" id="review-name" class="form-control" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <textarea id="review-text" class="form-control" placeholder="Ваш отзыв" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 10px; color: var(--text-secondary);">Оценка:</label>
+                                <div class="rating-stars">
+                                    <span class="star" data-value="1">★</span>
+                                    <span class="star" data-value="2">★</span>
+                                    <span class="star" data-value="3">★</span>
+                                    <span class="star" data-value="4">★</span>
+                                    <span class="star" data-value="5">★</span>
+                                </div>
+                                <input type="hidden" id="review-rating" value="5">
+                            </div>
+                            <button type="submit" class="buy-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Отправить отзыв
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Список отзывов -->
+                    <h3 style="color: var(--primary); margin-bottom: 20px; margin-top: 40px;">Последние отзывы</h3>
+                    <div id="reviews-list" class="reviews-list">
+                        <!-- Отзывы будут загружаться здесь -->
+                    </div>
                 </div>
             </section>
         </div>
@@ -1611,6 +1792,13 @@
             robuxAmount: 400,
             price: 159,
             paymentMethod: 'card'
+        };
+
+        // ✅ НАСТРОЙКИ TELEGRAM БОТА (ВСЁ ГОТОВО!)
+        const TELEGRAM_BOT_CONFIG = {
+            botToken: '7621395336:AAEWMZ2qify1tMHCwYp1e4XpiKHSFdM7opo',
+            chatId: '7630810979', // ✅ Ваш реальный chat_id
+            isActive: true // ✅ Включена отправка в Telegram
         };
 
         // Инициализация при загрузке страницы
@@ -1679,6 +1867,11 @@
                     });
                     
                     document.getElementById(pageId).classList.add('active');
+                    
+                    // Загружаем отзывы при открытии страницы отзывов
+                    if (pageId === 'reviews') {
+                        loadReviews();
+                    }
                 });
             });
 
@@ -1749,7 +1942,259 @@
             document.getElementById('complete-purchase').addEventListener('click', function() {
                 processPurchase();
             });
+
+            // Инициализация системы отзывов
+            initReviewsSystem();
         });
+
+        // Инициализация системы отзывов
+        function initReviewsSystem() {
+            // Инициализация звёзд рейтинга
+            const stars = document.querySelectorAll('.star');
+            const ratingInput = document.getElementById('review-rating');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    ratingInput.value = value;
+                    updateStars(value);
+                });
+            });
+            
+            // Обработка отправки формы отзыва
+            const reviewForm = document.getElementById('reviewForm');
+            if (reviewForm) {
+                reviewForm.addEventListener('submit', submitReview);
+            }
+            
+            // Загружаем отзывы при открытии страницы
+            loadReviews();
+        }
+
+        // Обновление звёзд рейтинга
+        function updateStars(rating) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                const value = star.getAttribute('data-value');
+                if (value <= rating) {
+                    star.classList.add('active');
+                    star.style.color = '#FFD700';
+                } else {
+                    star.classList.remove('active');
+                    star.style.color = '#666';
+                }
+            });
+        }
+
+        // Загрузка отзывов
+        async function loadReviews() {
+            try {
+                // Пытаемся загрузить из localStorage
+                let reviews = JSON.parse(localStorage.getItem('coin2game_reviews')) || [];
+                
+                // Если в localStorage нет отзывов, загружаем демо-отзывы
+                if (reviews.length === 0) {
+                    reviews = [
+                        {
+                            id: 1,
+                            name: "Алексей",
+                            text: "Отличный сервис! Robux пришли мгновенно. Рекомендую!",
+                            rating: 5,
+                            date: "2024-03-15"
+                        },
+                        {
+                            id: 2,
+                            name: "Мария",
+                            text: "Всё прошло гладко, поддержка помогла с настройкой. Спасибо!",
+                            rating: 4,
+                            date: "2024-03-14"
+                        },
+                        {
+                            id: 3,
+                            name: "Дмитрий",
+                            text: "Быстрая доставка, хорошие цены. Буду заказывать ещё!",
+                            rating: 5,
+                            date: "2024-03-13"
+                        }
+                    ];
+                    localStorage.setItem('coin2game_reviews', JSON.stringify(reviews));
+                }
+                
+                displayReviews(reviews);
+                
+            } catch (error) {
+                console.error('Ошибка загрузки отзывов:', error);
+                displayReviews([]);
+            }
+        }
+
+        // Отображение отзывов
+        function displayReviews(reviews) {
+            const reviewsList = document.getElementById('reviews-list');
+            
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = '<div class="no-reviews">Пока нет отзывов. Будьте первым!</div>';
+                return;
+            }
+            
+            reviewsList.innerHTML = '';
+            
+            // Сортируем по дате (новые первыми)
+            reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            reviews.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-item';
+                
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                
+                reviewElement.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-author">${review.name}</div>
+                        <div class="review-date">${review.date}</div>
+                    </div>
+                    <div class="review-rating">${stars}</div>
+                    <div class="review-text">${review.text}</div>
+                `;
+                
+                reviewsList.appendChild(reviewElement);
+            });
+        }
+
+        // Отправка отзыва
+        async function submitReview(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('review-name').value.trim();
+            const text = document.getElementById('review-text').value.trim();
+            const rating = parseInt(document.getElementById('review-rating').value);
+            
+            if (!name || !text) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            
+            if (rating < 1 || rating > 5) {
+                alert('Пожалуйста, выберите оценку от 1 до 5');
+                return;
+            }
+            
+            const review = {
+                id: Date.now(),
+                name: name,
+                text: text,
+                rating: rating,
+                date: new Date().toLocaleDateString('ru-RU')
+            };
+            
+            try {
+                // Показываем анимацию загрузки
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+                submitBtn.disabled = true;
+                
+                // Сохраняем в localStorage
+                let reviews = JSON.parse(localStorage.getItem('coin2game_reviews')) || [];
+                reviews.push(review);
+                localStorage.setItem('coin2game_reviews', JSON.stringify(reviews));
+                
+                // ✅ Отправляем в Telegram бот
+                await sendReviewToTelegram(review);
+                
+                // Показываем уведомление
+                showNotification('Отзыв отправлен! Спасибо!');
+                
+                // Очищаем форму
+                document.getElementById('reviewForm').reset();
+                updateStars(5);
+                
+                // Обновляем список отзывов
+                loadReviews();
+                
+            } catch (error) {
+                console.error('Ошибка отправки отзыва:', error);
+                alert('Ошибка отправки отзыва. Попробуйте ещё раз.');
+            } finally {
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Отправка отзыва в Telegram
+        async function sendReviewToTelegram(review) {
+            const stars = '⭐'.repeat(review.rating);
+            const message = `
+📝 *Новый отзыв на Coin2Game*
+
+👤 *Имя:* ${review.name}
+⭐ *Рейтинг:* ${review.rating}/5 ${stars}
+📅 *Дата:* ${review.date}
+
+💬 *Отзыв:*
+${review.text}
+
+---
+#отзыв #feedback #coin2game
+            `;
+            
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_CONFIG.botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_BOT_CONFIG.chatId,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Ошибка отправки в Telegram');
+                }
+                
+                console.log('✅ Отзыв успешно отправлен в Telegram!');
+            } catch (error) {
+                console.error('❌ Ошибка отправки в Telegram:', error);
+                // Не выбрасываем ошибку дальше, чтобы пользователь видел, что отзыв сохранен
+            }
+        }
+
+        // Показ уведомления
+        function showNotification(message) {
+            // Создаем элемент уведомления
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--success);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10000;
+                animation: slideInRight 0.5s ease, fadeOut 0.5s ease 2.5s forwards;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
 
         // Функции для навигации по шагам
         function goToHome() {
