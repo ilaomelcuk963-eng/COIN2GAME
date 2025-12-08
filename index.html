@@ -1969,6 +1969,9 @@
             
             // Загружаем отзывы при открытии страницы
             loadReviews();
+            
+            // Обновляем звёзды по умолчанию
+            updateStars(5);
         }
 
         // Обновление звёзд рейтинга
@@ -1986,15 +1989,51 @@
             });
         }
 
-        // Загрузка отзывов
+        // Загрузка отзывов (для GitHub Pages)
         async function loadReviews() {
             try {
-                // Пытаемся загрузить из localStorage
-                let reviews = JSON.parse(localStorage.getItem('coin2game_reviews')) || [];
+                const reviewsList = document.getElementById('reviews-list');
+                reviewsList.innerHTML = '<div class="no-reviews">Загрузка отзывов...</div>';
                 
-                // Если в localStorage нет отзывов, загружаем демо-отзывы
-                if (reviews.length === 0) {
-                    reviews = [
+                // Пытаемся загрузить из статического JSON файла на GitHub Pages
+                // Путь к reviews.json в том же репозитории
+                const jsonPath = window.location.hostname === 'ilaomelcuk963-eng.github.io' 
+                    ? '/COIN2GAME/reviews.json' 
+                    : 'reviews.json';
+                
+                const response = await fetch(jsonPath);
+                
+                if (!response.ok) {
+                    throw new Error('Не удалось загрузить отзывы');
+                }
+                
+                const data = await response.json();
+                let staticReviews = data.reviews || data;
+                
+                // Загружаем локальные отзывы из localStorage
+                const localStorageReviews = JSON.parse(localStorage.getItem('coin2game_reviews')) || [];
+                
+                // Объединяем отзывы (статичные + локальные)
+                const allReviews = [...staticReviews, ...localStorageReviews];
+                
+                if (allReviews.length === 0) {
+                    reviewsList.innerHTML = '<div class="no-reviews">Пока нет отзывов. Будьте первым!</div>';
+                    return;
+                }
+                
+                displayReviews(allReviews);
+                
+            } catch (error) {
+                console.error('Ошибка загрузки отзывов:', error);
+                
+                // Fallback: загружаем из localStorage
+                const localStorageReviews = JSON.parse(localStorage.getItem('coin2game_reviews')) || [];
+                
+                if (localStorageReviews.length > 0) {
+                    displayReviews(localStorageReviews);
+                } else {
+                    // Если в localStorage нет отзывов, показываем демо
+                    const demoReviews = [
                         {
                             id: 1,
                             name: "Алексей",
@@ -2017,14 +2056,9 @@
                             date: "2024-03-13"
                         }
                     ];
-                    localStorage.setItem('coin2game_reviews', JSON.stringify(reviews));
+                    
+                    displayReviews(demoReviews);
                 }
-                
-                displayReviews(reviews);
-                
-            } catch (error) {
-                console.error('Ошибка загрузки отзывов:', error);
-                displayReviews([]);
             }
         }
 
@@ -2032,7 +2066,7 @@
         function displayReviews(reviews) {
             const reviewsList = document.getElementById('reviews-list');
             
-            if (reviews.length === 0) {
+            if (!reviews || reviews.length === 0) {
                 reviewsList.innerHTML = '<div class="no-reviews">Пока нет отзывов. Будьте первым!</div>';
                 return;
             }
@@ -2040,25 +2074,51 @@
             reviewsList.innerHTML = '';
             
             // Сортируем по дате (новые первыми)
-            reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+            reviews.sort((a, b) => {
+                const dateA = a.created_at ? new Date(a.created_at) : new Date(a.date || 0);
+                const dateB = b.created_at ? new Date(b.created_at) : new Date(b.date || 0);
+                return dateB - dateA;
+            });
             
-            reviews.forEach(review => {
+            // Ограничиваем количество отображаемых отзывов
+            const displayCount = Math.min(reviews.length, 20);
+            
+            for (let i = 0; i < displayCount; i++) {
+                const review = reviews[i];
                 const reviewElement = document.createElement('div');
                 reviewElement.className = 'review-item';
                 
+                // Форматируем дату
+                let displayDate = 'Дата неизвестна';
+                if (review.created_at) {
+                    const date = new Date(review.created_at);
+                    displayDate = date.toLocaleDateString('ru-RU');
+                } else if (review.date) {
+                    displayDate = review.date;
+                }
+                
+                // Создаем звезды рейтинга
                 const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
                 
                 reviewElement.innerHTML = `
                     <div class="review-header">
                         <div class="review-author">${review.name}</div>
-                        <div class="review-date">${review.date}</div>
+                        <div class="review-date">${displayDate}</div>
                     </div>
                     <div class="review-rating">${stars}</div>
                     <div class="review-text">${review.text}</div>
                 `;
                 
                 reviewsList.appendChild(reviewElement);
-            });
+            }
+            
+            // Показываем количество отзывов
+            if (reviews.length > displayCount) {
+                const moreElement = document.createElement('div');
+                moreElement.className = 'no-reviews';
+                moreElement.textContent = `Показано ${displayCount} из ${reviews.length} отзывов`;
+                reviewsList.appendChild(moreElement);
+            }
         }
 
         // Отправка отзыва
@@ -2079,44 +2139,45 @@
                 return;
             }
             
-            const review = {
-                id: Date.now(),
-                name: name,
-                text: text,
-                rating: rating,
-                date: new Date().toLocaleDateString('ru-RU')
-            };
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+            submitBtn.disabled = true;
             
             try {
-                // Показываем анимацию загрузки
-                const submitBtn = event.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
-                submitBtn.disabled = true;
+                const review = {
+                    id: Date.now(),
+                    name: name,
+                    text: text,
+                    rating: rating,
+                    date: new Date().toISOString().split('T')[0],
+                    source: 'github_pages'
+                };
                 
                 // Сохраняем в localStorage
                 let reviews = JSON.parse(localStorage.getItem('coin2game_reviews')) || [];
                 reviews.push(review);
                 localStorage.setItem('coin2game_reviews', JSON.stringify(reviews));
                 
-                // ✅ Отправляем в Telegram бот
+                // Отправляем в Telegram
                 await sendReviewToTelegram(review);
                 
                 // Показываем уведомление
-                showNotification('Отзыв отправлен! Спасибо!');
+                showNotification('✅ Отзыв сохранен! Спасибо за ваш отзыв!');
                 
                 // Очищаем форму
                 document.getElementById('reviewForm').reset();
                 updateStars(5);
                 
                 // Обновляем список отзывов
-                loadReviews();
+                setTimeout(() => {
+                    loadReviews();
+                }, 1000);
                 
             } catch (error) {
                 console.error('Ошибка отправки отзыва:', error);
-                alert('Ошибка отправки отзыва. Попробуйте ещё раз.');
+                showNotification('❌ Ошибка сохранения отзыва. Попробуйте ещё раз.');
             } finally {
-                const submitBtn = event.target.querySelector('button[type="submit"]');
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }
@@ -2124,9 +2185,14 @@
 
         // Отправка отзыва в Telegram
         async function sendReviewToTelegram(review) {
+            if (!TELEGRAM_BOT_CONFIG.isActive) {
+                console.log('Отправка в Telegram отключена');
+                return;
+            }
+            
             const stars = '⭐'.repeat(review.rating);
             const message = `
-📝 *Новый отзыв на Coin2Game*
+📝 *Новый отзыв на Coin2Game* (GitHub Pages)
 
 👤 *Имя:* ${review.name}
 ⭐ *Рейтинг:* ${review.rating}/5 ${stars}
@@ -2136,7 +2202,7 @@
 ${review.text}
 
 ---
-#отзыв #feedback #coin2game
+#отзыв #feedback #coin2game #github_pages
             `;
             
             try {
